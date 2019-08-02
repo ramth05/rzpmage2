@@ -13,6 +13,7 @@ before_deploy:
 - mkdir -pv code/razorpay/magento
 - rsync -av  --exclude='code' --exclude="release.txt"  . code/razorpay/magento
 - cat release.txt |zip -r@ "code.zip"
+- rm -rf code
 deploy:
   provider: releases
   skip_cleanup: true
