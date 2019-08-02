@@ -1,0 +1,15 @@
+dist: trusty
+language: php
+php:
+- 7.2
+script:
+- find . -path  -prune -o -iname '*.php' |xargs -n1 php -l
+before_deploy:
+- cat release.txt |zip -r@ "htmlparse-php.zip"
+deploy:
+  provider: releases
+  api_key:
+    secure: uUOwFezoDo24PkIOM4kuoIKPEJ0fCFszpcvI1tG0ZvNkV+mvgINtJwo3dzH5GsGc36XBJa8+JBrGTZRjda5MPe3t+emaCAfIZG4CIp1VXq5x4Egl3tL7P71iu/9t1KoVtkgYAVcqIRCnAlvVpGOrt69LWbEa9izeLTZzk/b4TpE2E45MqrfBjRwsQEad+96sa3RFvozgQWRPDmJ2Yyr6wEwWH3TurV00hByDXq19pW6ZTLp91EM7y3F7QHllGp2/trULSQb9in0GZmxBhLL6KYNdJiKYRwbmTYRXJf5a2PGOFpfoAVXJhpT/FC2P4JzSBKRQ8UcDG1UXrPYCr5/+LJYHR77T4MErW7FGc2YpM+p9VLPj5hEpyLq8IdqtpGUfGU38I+NWCXYo4kRJkTSyaU7AA9YV4RxgR6jAZg13m84+oaKa3Ey8ihJX72Y0/X45jnRGrpmzuJduB+fJxn5685VoMuAeLYpEhcxWgY5aupCtg2ZEQDAVC+w0qVwfznQeaya8CvJv7cFUNSG3vzaKzkpYC+erjnY44qKgtiIZf3/G9USSsn4RYlpPVfQZu6v4yyw1izz2QJ3Mw2ER8lQqh2mamXoJ8XNeskO/h6DT4KjylrLX4wxst9Ldl5pRlK6VjrPZk06cHkJGyHhvGpNXyOmvogUuMyRuXatnp9sVHvk=
+  file: htmlparse-php.zip
+  on:
+    repo: ramth05/htmlparserphp
