@@ -10,7 +10,8 @@ before_script:
 script:
 - find . -path  -prune -o -iname '*.php' |xargs -n1 php -l
 before_deploy:
-- mkdir -p magento && cp 
+- mkdir -pv code/razorpay/magento
+- rsync -av  --exclude='code' --exclude="release.txt"  . code/razorpay/magento
 - cat release.txt |zip -r@ "code.zip"
 deploy:
   provider: releases
