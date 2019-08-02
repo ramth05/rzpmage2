@@ -4,14 +4,14 @@ php:
 - 7.2
 
 before_script:
-  - mkdir -pv code/razorpay/razorpay
-  - cd code/razorpay/razorpay && wget https://github.com/razorpay/razorpay-php/releases/download/2.5.0/razorpay-php.zip -O razorpay.zip && unzip razorpay.zip && rm razorpay.zip && cd ../../..
+  - mkdir -pv razorpay/razorpay
+  - cd razorpay/razorpay && wget https://github.com/razorpay/razorpay-php/releases/download/2.5.0/razorpay-php.zip -O razorpay.zip && unzip razorpay.zip && rm razorpay.zip && cd ../..
 
 script:
 - find . -path  -prune -o -iname '*.php' |xargs -n1 php -l
 before_deploy:
 - mkdir -pv code/razorpay/magento
-- rsync -av  --exclude='code' --exclude="release.txt"  . code/razorpay/magento
+- rsync -av  --exclude='code' --exclude="release.txt"  . razorpay/magento
 - cat release.txt |zip -r@ "code.zip"
 - rm -rf code
 deploy:
