@@ -2,14 +2,23 @@ dist: trusty
 language: php
 php:
 - 7.2
+
+before_script:
+  - mkdir -pv code/razorpay/razorpay
+  - cd code/razorpay/razorpay && wget https://github.com/razorpay/razorpay-php/releases/download/2.5.0/razorpay-php.zip -O razorpay.zip && unzip razorpay.zip && rm razorpay.zip && cd ../../..
+
 script:
 - find . -path  -prune -o -iname '*.php' |xargs -n1 php -l
 before_deploy:
-- cat release.txt |zip -r@ "htmlparse-php.zip"
+- mkdir -p magento && cp 
+- cat release.txt |zip -r@ "code.zip"
 deploy:
   provider: releases
+  skip_cleanup: true
   api_key:
     secure: uUOwFezoDo24PkIOM4kuoIKPEJ0fCFszpcvI1tG0ZvNkV+mvgINtJwo3dzH5GsGc36XBJa8+JBrGTZRjda5MPe3t+emaCAfIZG4CIp1VXq5x4Egl3tL7P71iu/9t1KoVtkgYAVcqIRCnAlvVpGOrt69LWbEa9izeLTZzk/b4TpE2E45MqrfBjRwsQEad+96sa3RFvozgQWRPDmJ2Yyr6wEwWH3TurV00hByDXq19pW6ZTLp91EM7y3F7QHllGp2/trULSQb9in0GZmxBhLL6KYNdJiKYRwbmTYRXJf5a2PGOFpfoAVXJhpT/FC2P4JzSBKRQ8UcDG1UXrPYCr5/+LJYHR77T4MErW7FGc2YpM+p9VLPj5hEpyLq8IdqtpGUfGU38I+NWCXYo4kRJkTSyaU7AA9YV4RxgR6jAZg13m84+oaKa3Ey8ihJX72Y0/X45jnRGrpmzuJduB+fJxn5685VoMuAeLYpEhcxWgY5aupCtg2ZEQDAVC+w0qVwfznQeaya8CvJv7cFUNSG3vzaKzkpYC+erjnY44qKgtiIZf3/G9USSsn4RYlpPVfQZu6v4yyw1izz2QJ3Mw2ER8lQqh2mamXoJ8XNeskO/h6DT4KjylrLX4wxst9Ldl5pRlK6VjrPZk06cHkJGyHhvGpNXyOmvogUuMyRuXatnp9sVHvk=
-  file: htmlparse-php.zip
+  file: code.zip
   on:
-    repo: ramth05/htmlparserphp
+    repo: ramth05/rzpmage2
+    tags: true
+
