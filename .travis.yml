@@ -17,7 +17,7 @@ before_deploy:
   sed -i '/namespace Razorpay\\Magento\\Controller;/a\
   \
   // require in case of zip installation without composer \
-  require_once __DIR__ . "/../../Razorpay/Razorpay.php";\' code/Razorpay/Magento/Controller/BaseController.php
+  require_once __DIR__ . "/../../Razorpay/Razorpay.php";' code/Razorpay/Magento/Controller/BaseController.php
 - cat release.txt |zip -r@ "razorpay-magento-2.x.zip"
 - rm -rf code
 
