@@ -8,7 +8,7 @@
         "razorpay/razorpay": "2.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8",
+        "phpunit/phpunit": "^4.8"
     },
     "keywords": [
         "razorpay",
