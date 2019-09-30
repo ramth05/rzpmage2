@@ -25,4 +25,22 @@ class PaymentActionTest extends \PHPUnit\Framework\TestCase
             $sourceModel->toOptionArray()
         );
     }
+
+    public function testToOptionArray2()
+    {
+        $sourceModel = new PaymentAction();
+        static::assertEquals(
+            [
+                [
+                    'value' => AbstractMethod::ACTION_AUTHORIZE,
+                    'label' => __('Authorize Only2')
+                ],
+                [
+                    'value' => AbstractMethod::ACTION_AUTHORIZE_CAPTURE,
+                    'label' => __('Authorize and Capture')
+                ]
+            ],
+            $sourceModel->toOptionArray()
+        );
+    }
 }
