@@ -3,12 +3,16 @@ language: php
 php:
 - 7.2
 
+install:
+    - composer install --prefer-dist
+
 before_script:
   - mkdir -pv code/Razorpay/Razorpay
   - cd code/Razorpay/Razorpay && wget https://github.com/razorpay/razorpay-php/releases/download/2.5.0/razorpay-php.zip -O razorpay.zip && unzip razorpay.zip && rm razorpay.zip && cd ../../..
 
 script:
 - find . -path  -prune -o -iname '*.php' |xargs -n1 php -l
+- php vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 before_deploy:
 - mkdir -pv code/Razorpay/Magento
