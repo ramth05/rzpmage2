@@ -5,7 +5,7 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://github.com/pepe1518/magento2/tree/master/vendor/magento"
+            "url": "https://github.com/magento/magento2.git"
         }
     ],
     "require": {
